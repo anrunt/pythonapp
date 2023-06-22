@@ -9,7 +9,7 @@ def randomcode():
 
     output_string.set(code)
     
-    
+randomcode.bind('<Return>',randomcode)    
 
 # window
 
