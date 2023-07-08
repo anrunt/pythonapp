@@ -5,7 +5,7 @@ import random
 import pyperclip
 from tkinter.font import Font
 
-# Entry field
+# Entry field + Function which adds passwords to database and txt file 
 def create_tab1(parent,label_text,button_text):
     tab1 = ttk.Frame(master = parent)
     
@@ -13,9 +13,13 @@ def create_tab1(parent,label_text,button_text):
         password_name = password_name_str.get()
         login = login_str.get()
         password = password_str.get()
-        data = (password_name,login,password)
+        data = [password_name,login,password]
+
+        with open('passwords.txt','a') as file:
+            file.write(str(data) + '\n')
 
         data_table.insert(parent='', index=0, values=data)
+
 
     ttk.Label(
         tab1,
@@ -24,7 +28,7 @@ def create_tab1(parent,label_text,button_text):
     
     ttk.Label(
         tab1,
-        text='Password Name',
+        text='App',
         font=small_font).pack()
 
     password_name_str = tk.StringVar()
